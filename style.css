@@ -204,6 +204,7 @@ section {
   background-color: rgb(45, 117, 96);
   border-radius: 3px;
   cursor: pointer;
+  font-family: "Roboto Mono";
 }
 
 .match {
