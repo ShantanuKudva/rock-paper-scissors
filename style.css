@@ -178,7 +178,8 @@ section {
   font-size: 25px;
 }
 
-.intro {
+.intro,
+.ending {
   color: rgb(224, 224, 224);
   height: 50vh;
   display: flex;
@@ -189,12 +190,14 @@ section {
   transition: opacity 0.5s ease;
 }
 
-.intro h1 {
+.intro h1,
+.ending h1 {
   font-size: 50px;
 }
 
 .intro button,
-.match button {
+.match button,
+.ending button {
   width: 150px;
   height: 50px;
   background: none;
@@ -207,7 +210,8 @@ section {
   font-family: "Roboto Mono";
 }
 
-.match {
+.match,
+.ending {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -244,8 +248,8 @@ div.fadein {
   pointer-events: all;
 }
 
-@keyframes shakePlayer {
-  0% {
+/*@keyframes shakePlayer {
+   0% {
     transform: rotateY(180deg) translateY(0px);
   }
   15% {
@@ -302,4 +306,4 @@ div.fadein {
   100% {
     transform: translateY(0px);
   }
-}
+} */

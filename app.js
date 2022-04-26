@@ -127,93 +127,137 @@ let computerHand = document.querySelector(".match .hands .computer-hand");
 let playerHand = document.querySelector(".match .hands .player-hand");
 let score1 = 0,
   score2 = 0;
+let hands = document.querySelectorAll(".hands");
+let resetButton = document.querySelector(".ending button");
+
+const rockanimation = function () {
+  playerHand.style.animation = "shakePlayer 2s ease";
+  computerHand.style.animation = "shakeComputer 2s ease";
+};
+
+const rockFunction = function () {
+  if (score1 === 20 || score2 === 20) {
+    document.querySelector(".match").classList.add("fadeout");
+    document.querySelector(".match").style.zIndex = "-10";
+    document.querySelector(".ending").classList.add("fadein");
+    document.querySelector(".ending").style.zIndex = "200";
+  } else {
+    playerHand.src = "assets/rock.png";
+    let playerscore = document.querySelector(".player-score p");
+    let computerscore = document.querySelector(".computer-score p");
+    let random = Math.floor(Math.random() * 3 + 1);
+    if (random === 1) {
+      computerHand.src = "assets/rock.png";
+    } else if (random === 2) {
+      computerHand.src = "assets/paper.png";
+    } else if (random === 3) {
+      computerHand.src = "assets/scissors.png";
+    }
+    if (random === 1) {
+      document.querySelector(".match .winner").textContent = "Its a draw!";
+    } else if (random === 2) {
+      document.querySelector(".match .winner").textContent = "Computer wins!";
+      score2++;
+      computerscore.textContent = score2;
+    } else if (random === 3) {
+      document.querySelector(".match .winner").textContent = "You win!";
+      score1++;
+      playerscore.textContent = score1;
+    }
+  }
+};
+
+const paperFunction = function () {
+  if (score1 === 20 || score2 === 20) {
+    document.querySelector(".match").classList.add("fadeout");
+    document.querySelector(".match").style.zIndex = "-10";
+    document.querySelector(".ending").classList.add("fadein");
+    document.querySelector(".ending").style.zIndex = "200";
+  } else {
+    playerHand.src = "assets/paper.png";
+    let playerscore = document.querySelector(".player-score p");
+    let computerscore = document.querySelector(".computer-score p");
+    let random = Math.floor(Math.random() * 3 + 1);
+    if (random === 1) {
+      computerHand.src = "assets/rock.png";
+    } else if (random === 2) {
+      computerHand.src = "assets/paper.png";
+    } else if (random === 3) {
+      computerHand.src = "assets/scissors.png";
+    }
+    if (random === 1) {
+      document.querySelector(".match .winner").textContent = "You win!!";
+      score1++;
+      playerscore.textContent = score1;
+    } else if (random === 2) {
+      document.querySelector(".match .winner").textContent = "Its a draw";
+    } else if (random === 3) {
+      document.querySelector(".match .winner").textContent = "Computer wins!";
+      score2++;
+      computerscore.textContent = score2;
+    }
+  }
+};
+
+const scissorsFunction = function () {
+  if (score1 === 20 || score2 === 20) {
+    document.querySelector(".match").classList.add("fadeout");
+    document.querySelector(".match").style.zIndex = "-10";
+    document.querySelector(".ending").classList.add("fadein");
+    document.querySelector(".ending").style.zIndex = "200";
+  } else {
+    playerHand.src = "assets/scissors.png";
+    let playerscore = document.querySelector(".player-score p");
+    let computerscore = document.querySelector(".computer-score p");
+    let random = Math.floor(Math.random() * 3 + 1);
+    if (random === 1) {
+      computerHand.src = "assets/rock.png";
+    } else if (random === 2) {
+      computerHand.src = "assets/paper.png";
+    } else if (random === 3) {
+      computerHand.src = "assets/scissors.png";
+    }
+    if (random === 1) {
+      document.querySelector(".match .winner").textContent = "Computer wins!!";
+      score2++;
+      computerscore.textContent = score2;
+    } else if (random === 2) {
+      document.querySelector(".match .winner").textContent = "You win!!";
+      score1++;
+      playerscore.textContent = score1;
+    } else if (random === 3) {
+      document.querySelector(".match .winner").textContent = "Its a draw";
+    }
+  }
+};
+
+const reset = function () {
+  let playerscore = document.querySelector(".player-score p");
+  let computerscore = document.querySelector(".computer-score p");
+  document.querySelector(".match").classList.add("fadein");
+  document.querySelector(".match").style.zIndex = "0";
+  document.querySelector(".ending").classList.add("fadeout");
+  document.querySelector(".ending").style.zIndex = "-10";
+  computerscore.textContent = playerscore.textContent = "0";
+  score1 = score2 = 0;
+};
+
+rock.addEventListener("click", rockFunction);
+paper.addEventListener("click", paperFunction);
+scissors.addEventListener("click", scissorsFunction);
 startButton.addEventListener("click", function () {
   document.querySelector(".match").classList.add("fadein");
   document.querySelector(".match").style.zIndex = "0";
   document.querySelector(".intro").classList.add("fadeout");
   document.querySelector(".intro").style.zIndex = "-10";
 });
-
-// const animation =  function(){
-//   playerHand.style.animation = "shakePlayer 2s ease";
-//   computerHand.style.animation = "shakeComputer 2s ease";
-// }
-
-const rockFunction = function () {
-  playerHand.src = "assets/rock.png";
+resetButton.addEventListener("click", function () {
   let playerscore = document.querySelector(".player-score p");
   let computerscore = document.querySelector(".computer-score p");
-  let random = Math.floor(Math.random() * 3 + 1);
-  if (random === 1) {
-    computerHand.src = "assets/rock.png";
-  } else if (random === 2) {
-    computerHand.src = "assets/paper.png";
-  } else if (random === 3) {
-    computerHand.src = "assets/scissors.png";
-  }
-  if (random === 1) {
-    document.querySelector(".match .winner").textContent = "Its a draw!";
-  } else if (random === 2) {
-    document.querySelector(".match .winner").textContent = "Computer wins!";
-    score2++;
-    computerscore.textContent = score2;
-  } else if (random === 3) {
-    document.querySelector(".match .winner").textContent = "You win!";
-    score1++;
-    playerscore.textContent = score1;
-  }
-};
-
-const paperFunction = function () {
-  playerHand.src = "assets/paper.png";
-  let playerscore = document.querySelector(".player-score p");
-  let computerscore = document.querySelector(".computer-score p");
-  let random = Math.floor(Math.random() * 3 + 1);
-  if (random === 1) {
-    computerHand.src = "assets/rock.png";
-  } else if (random === 2) {
-    computerHand.src = "assets/paper.png";
-  } else if (random === 3) {
-    computerHand.src = "assets/scissors.png";
-  }
-  if (random === 1) {
-    document.querySelector(".match .winner").textContent = "You win!!";
-    score1++;
-    playerscore.textContent = score1;
-  } else if (random === 2) {
-    document.querySelector(".match .winner").textContent = "Its a draw";
-  } else if (random === 3) {
-    document.querySelector(".match .winner").textContent = "Computer wins!";
-    score2++;
-    computerscore.textContent = score2;
-  }
-};
-
-const scissorsFunction = function () {
-  playerHand.src = "assets/scissors.png";
-  let playerscore = document.querySelector(".player-score p");
-  let computerscore = document.querySelector(".computer-score p");
-  let random = Math.floor(Math.random() * 3 + 1);
-  if (random === 1) {
-    computerHand.src = "assets/rock.png";
-  } else if (random === 2) {
-    computerHand.src = "assets/paper.png";
-  } else if (random === 3) {
-    computerHand.src = "assets/scissors.png";
-  }
-  if (random === 1) {
-    document.querySelector(".match .winner").textContent = "Computer wins!!";
-    score2++;
-    computerscore.textContent = score2;
-  } else if (random === 2) {
-    document.querySelector(".match .winner").textContent = "You win!!";
-    score1++;
-    playerscore.textContent = score1;
-  } else if (random === 3) {
-    document.querySelector(".match .winner").textContent = "Its a draw";
-  }
-};
-
-rock.addEventListener("click", rockFunction);
-paper.addEventListener("click", paperFunction);
-scissors.addEventListener("click", scissorsFunction);
+  computerscore.textContent = playerscore.textContent = "0";
+  score1 = score2 = 0;
+  document.querySelector(".match").classList.add("fadein");
+  document.querySelector(".match").style.zIndex = "0";
+  document.querySelector(".ending").classList.add("fadeout");
+  document.querySelector(".ending").style.zIndex = "-10";
+});
